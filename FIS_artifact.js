@@ -1,5 +1,5 @@
 document.getElementById("FIS_nav").innerHTML = "
-<a href = "index.html">Home</a>
+<a href = 'index.html'>Home</a>
 ";
 
 document.getElementById("FIS_div").innerHTML = "
