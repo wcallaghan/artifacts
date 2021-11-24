@@ -1,5 +1,4 @@
 documemnt.getElementById("links").InnerHTML= "
-<a href= "index.html">Home</a>
 <a href = "FIS_artifact.html">Fast Inverse Square Root</a>
 ";
 
