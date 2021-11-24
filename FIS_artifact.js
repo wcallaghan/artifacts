@@ -1,8 +1,8 @@
-document.getElementById("FIS_nav").InnerHTML = "
+document.getElementById("FIS_nav").innerHTML = "
 <a href = "index.html">Home</a>
 ";
 
-document.getElementById("FIS_div").InnerHTML = "
+document.getElementById("FIS_div").innerHTML = "
 <h1>Practical Application of Fast Inverse Square Root Method<h1>
   <p>It does not take a lot of experimenting with computers to come to the conclusion that they process data very quickly. Unforunately not all data transformations are fast.
     Notably, division is a slow process when compared to multiplication and addition; many common programming languages also hold a math library which contains useful methods
