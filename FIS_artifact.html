@@ -10,7 +10,44 @@
 	<a href = 'index.html'>Home</a>
 </nav>
 <div id ="FIS_div">
+<h1>Practical Application of Fast Inverse Square Root Method<h1>
+<p>It does not take a lot of experimenting with computers to come to the conclusion that they process data very quickly. Unforunately not all data transformations are fast.
+    Notably, division is a slow process when compared to multiplication and addition; many common programming languages also hold a math library which contains useful methods
+    Java and many others have a method to solve for square root, math.sqrt(a), which is helpful but regrettably slow. When presented with 1/√x coding this in Java is simple
+    yet slow; this artifact will examine ways to speed up this calculation making it much more efficient to compile.</p>
+<h2>Why should we care?</h2>
+<p>Knowing the process of calculating 1/√x is neat but when would you ever need this calculation? Any program that works with physics, lighting, rendering will want vector angles normalized to length 1.00. 
+The difference between the processes are only milliseconds, so why would it make sense to take extra effort to save fractions of a second? The answer lies in scope;
+in a vacummn the difference is miniscule, but when writing a function or method that will take thousands or tens of thousands of parameters these small differences add up very
+quickly.</p>
 </div>
+<div>
+<h2>Floating Point</h2>
+<p>Java uses a subset of the IEE 754 binary floating point standard to represent numbers. A float is represented using 32 bits which it mirrors scientific notation
+to display numbers up to 2^32. It starts with the sign which denotes if the number is positive or negative, 0 or 1; bits 30-23 represent the exponent and is biased by 127
+meaning we encode 127 +/- exponent; bits 22-0 are the mantissa, these are normalized to be between 0.5 and 1 because not all decimal values can be represented in binary so
+0.1 for example is approximated by the closest 23 bit binary fraction. There is one hidden bit in the mantissa, since a mantissa always begins with 1 it does not need to be stored.
+</p>
+<h2>How do you perform bit manipulation on a float?</h2>
+<p>The short answer is, you can't. Floats adhere to the IEE 754 standard and cannot be manipluated. Thankfully in Java we have the int data type which does allow bit manipulation.
+Java also has a method that accepts a float as an argument and retruns the bits of that float as an int data type which is handy.
+</p>
+<h2>Application</h2>
+<p>
+This proof of concept application is a simple i/o GUI application that accepts a float input and performs 1/√x two times, one using a method that utilizes bit manipluation
+and the second uses the simple way of coding with the Math.sqrt() method and it also display the execution times of each.
+</p>
+<img src ="" alt="">
+
+<img src ="" alt="">
+
+<img src ="" alt="">
+	
+<img src ="" alt="">
+
+<img src ="" alt="">
+</div>
+
 <script src="FIS_artifact.js"></script>		
 </BODY>	
 </HTML>
