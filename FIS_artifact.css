@@ -2,19 +2,19 @@ body {
     background-color: #DFBAFF;
 }
 h1 {
-    font-size: 2.em;
+    font-size: 2em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     color: FFEFD5;
 }
 p {
-    font-size: 1.5em;
+    font-size: 1em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     color: F5FFFA;
 }
 div {
-    font-size: 1.5em;
+    font-size: 1em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     color: F5FFFA;
