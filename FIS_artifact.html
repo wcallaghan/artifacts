@@ -3,12 +3,16 @@
 <HEAD>
 	<title>Fast Inverse Square Root</title>
 	<link rel="stylesheet" href="FIS_artifact.css">
+<meta charset = "utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 </HEAD>
 <BODY>
+<section>
 <nav id ="FIS_nav">
 	<a href = 'index.html'>Home</a>
 </nav>
+</section>
 <div id ="FIS_div">
 <h1>Practical Application of Fast Inverse Square Root Method<h1>
 <p>It does not take a lot of experimenting with computers to come to the conclusion that they process data very quickly. Unforunately not all data transformations are fast.
@@ -31,25 +35,34 @@ meaning we encode 127 +/- exponent; bits 22-0 are the mantissa, these are normal
 </p>
 <h2>How do you perform bit manipulation on a float?</h2>
 <p>The short answer is, you can't. Floats adhere to the IEE 754 standard and cannot be manipluated. Thankfully in Java we have the int data type which does allow bit manipulation.
-Java also has a method that accepts a float as an argument and retruns the bits of that float as an int data type which is handy.
+Java also has a method that accepts a float as an argument and retruns the bits of that float as an int data type which is handy. Once the bits are stored as an int we can bit shift right; this essentially takes the inverse square root because we are halfing a negative exponent.
+</p>
+<h2>Magic Number</h2>
+<p>Magic numbers are tricky in programming because many developers do not understand the specifics of why the number is used or how it came to be, nor do they need to. Although complex understanding some of the maths can be important to understanding the full functionality of the code.
+Here we are using a magic number 0x5f3759df, a hexadecimal constant, note that we are using 32 bits to represent scientific notation:s (sign bit), e(exponent 8 bits) and B = 127 the exponent bias, and m(mantissa 23 bits),  if we assume x is a positive normal number then 1/√x is approximate to log<sub>2</sub>(1/√x) or -1/2log<sub>2</sub>(x), then x=2<sup>e<sub>x</sub></sup>(1 + m<sub>x</sub>)
+then log<sub>2</sub>(1 + m<sub>x</sub>) is approximate to m<sub>x</sub> + sigma where sigma is a free parameter to tune the approximation, with scaling and shifting log<sub>2</sub>(x) is approximate to e<sub>x</sub> + m<sub>x</sub> + sigma then interpreting the floating point bit-pattern of x as an integer we can see that log<sub>2</sub>(x) is approximate to
+I<sub>x</sub>/L(2<sup>23</sup>) - (B - sigma), finally we get to the magic number 0x5f3759df which is equal to 3/2L(B - sigma); this magic number lets us find 1/√x in code without using a square root calculation or division by subracting it from the integer representation bit shifted right with a 1% error margin after 1 newton iteration.
 </p>
 <h2>Application</h2>
 <p>
 This proof of concept application is a simple i/o GUI application that accepts a float input and performs 1/√x two times, one using a method that utilizes bit manipluation
 and the second uses the simple way of coding with the Math.sqrt() method and it also display the execution times of each.
 </p>
+<article>
 <p>Here we enter the input 3.742</p>
 <img src ="1.jpg" alt="Decimal input">
 <p>The fast inverse square root method outputs 0.5160491</p>
 <img src ="2.jpg" alt="Output 1">
 <p>The Math.sqrt() method outputs 0.5169494</p>
 <img src ="4.jpg" alt="Output 2">
-
+<p>First method speed</p>
 <img src ="3.jpg" alt="Speed 1">
-
+<p>Second method speed</p>
 <img src ="5.jpg" alt="Speed 2">
 <p>The output speeds are displayed in nano seconds and the difference between them is 6.1047 miliseconds. Note that the code also generates the GUI window so the execution times
 are not solely the calculation methods.</p>
+
+</article>
 </div>		
 </BODY>	
 </HTML>
