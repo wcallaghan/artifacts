@@ -1,6 +1,16 @@
 body {
     background-color: #DFBAFF;
 }
+article{
+  float: left;
+  padding: 20px;
+  width: 70%;
+}
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 h1 {
     font-size: 2em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -26,6 +36,8 @@ button {
     justify-content: center;
 }
 nav {
+  float: left;
+  width: 30%;
   display: block;
   font-size: 1.5em;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
